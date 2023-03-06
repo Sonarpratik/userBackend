@@ -2,12 +2,12 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const cookie = require('cookie-parser')
-
+const port = process.env.PORT || 4000;
 
 const dotenv = require("dotenv");
 dotenv.config();
 
-const PORT = process.env.PORT;
+// const PORT = process.env.PORT;
 
 
 const cors = require("cors")
@@ -48,6 +48,6 @@ app.get("*", (req, res) => {
   res.send("hello hahaha ur wrong");
 });
 
-app.listen(PORT, () => {
-  console.log(`server is running on port no ${PORT}`);
+app.listen(port, () => {
+  console.log(`server is running on port no ${port}`);
 });
