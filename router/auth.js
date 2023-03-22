@@ -60,9 +60,8 @@ router.post("/login", async (req, res) => {
 
       res.cookie("jwtoken", token, {
         expires: new Date(Date.now() + 25892000000), //30 days
-        // httpOnly: true,
+        httpOnly: true,
       });
-     
 
       if (!inMatch) {
         return res.status(404).send("invalid credentials");
@@ -175,7 +174,7 @@ router.post("/find", async (req, res) => {
 });
 router.get("/time", async (req, res) => {
   try {
-    const time = await Mainaa.find(req.query);
+    const time = await Mainaa.find();
     res.status(200).json(time);
   } catch (e) {
     console.log(e);
@@ -194,7 +193,4 @@ router.get("/logout", async (req, res) => {
   res.clearCookie("jwtoken", { path: "/" });
   res.status(200).send("User Logout");
 });
-
-
-router.get("/rooms")
 module.exports = router;
